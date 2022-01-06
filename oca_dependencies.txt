@@ -12,3 +12,6 @@
 # sale-workflow https://github.com/OCA/sale-workflow
 #
 # To provide both the URL and a branch, use:
+opnsynid-server-tools https://github.com/open-synergy/opnsynid-server-tools.git 8.0
+opnsynid-hr https://github.com/open-synergy/opnsynid-hr.git 8.0
+opnsynid-partner-contact https://github.com/open-synergy/opnsynid-partner-contact.git 8.0

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+
+<record id="hr_employee_age_view_form" model="ir.ui.view">
+    <field name="name">hr.employee_age form</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form" />
+    <field name="arch" type="xml">
+        <xpath expr="//group[@string='Status']" position="before">
+            <group string="Legal Information">
+                <field name="legal_address_id" />
+                <group colspan="2">
+                    <label for="legal_street" string="Address" />
+                    <div>
+                        <field name="legal_street" placeholder="Street..." />
+                        <field name="legal_street2" />
+                        <div class="address_format">
+                            <field
+                                        name="legal_city"
+                                        placeholder="City"
+                                        style="width: 40%%"
+                                    />
+                            <field
+                                        name="legal_state_id"
+                                        class="oe_no_button"
+                                        placeholder="State"
+                                        style="width: 37%%"
+                                    />
+                            <field
+                                        name="legal_zip"
+                                        placeholder="ZIP"
+                                        style="width: 20%%"
+                                    />
+                        </div>
+                        <field
+                                    name="legal_country_id"
+                                    placeholder="Country"
+                                    class="oe_no_button"
+                                />
+                    </div>
+                </group>
+                <field name="legal_phone" />
+            </group>
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>

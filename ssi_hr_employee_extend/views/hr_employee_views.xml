@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <record id="hr_employee_view_form" model="ir.ui.view">
+        <field name="name">form hr.employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='department_id']" position="before">
+                    <field name="organization_unit_id" />
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="after">
+                    <field
+                        name="allowed_job_grade_ids"
+                        widget="many2many_tags"
+                        invisible="1"
+                    />
+                    <field
+                        name="job_grade_id"
+                        domain="[('id','in',allowed_job_grade_ids)]"
+                    />
+                    <field name="employment_status_id" />
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="before">
+                    <field name="date_join" />
+                    <field name="date_termination" />
+                    <label for="year_work_longetivity" string="Work Longetivity" />
+                    <div>
+                          <field name="year_work_longetivity" class="oe_inline" /> Years
+                          <field
+                            name="month_work_longetivity"
+                            class="oe_inline"
+                        /> Months
+                    </div>
+                </xpath>
+                <xpath
+                    expr="//page[@name='personal_information']/group[1]/group[1]"
+                    position="after"
+                >
+                    <group string="Legal Information" clospan="2">
+                        <field name="legal_address_id" label="Legal Address" />
+                        <!-- <group colspan="2"> -->
+                        <label for="legal_street" string="Address" />
+                        <div>
+                            <field name="legal_street" placeholder="Street..." />
+                            <field name="legal_street2" />
+                            <div class="address_format">
+                                <field
+                                    name="legal_city"
+                                    placeholder="City"
+                                    style="width: 40%%"
+                                />
+                                <field
+                                    name="legal_state_id"
+                                    class="oe_no_button"
+                                    placeholder="State"
+                                    style="width: 37%%"
+                                />
+                                <field
+                                    name="legal_zip"
+                                    placeholder="ZIP"
+                                    style="width: 20%%"
+                                />
+                            </div>
+                            <field
+                                name="legal_country_id"
+                                placeholder="Country"
+                                class="oe_no_button"
+                            />
+                        </div>
+                        <!-- </group> -->
+                        <field name="legal_phone" />
+                    </group>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

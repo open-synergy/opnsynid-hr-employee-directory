@@ -3,7 +3,7 @@
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models
+from openerp import fields, models, api
 
 
 class HrEmployee(models.Model):
@@ -48,6 +48,12 @@ class HrEmployee(models.Model):
     legal_phone = fields.Char(
         string="Phone",
         related="legal_address_id.phone",
-        readonly=True,
+        readonly=False,
         store=True,
     )
+
+    @api.onchange(
+        "address_home_id",
+    )
+    def onchange_legal_address_id(self):
+        self.legal_address_id = False

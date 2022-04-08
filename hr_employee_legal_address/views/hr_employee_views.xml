@@ -10,9 +10,11 @@
     <field name="model">hr.employee</field>
     <field name="inherit_id" ref="hr.view_employee_form" />
     <field name="arch" type="xml">
+        <xpath expr="//field[@name='address_home_id']" position="after">
+            <field name="legal_address_id" attrs="{'invisible':[('address_home_id','=',False)]}" domain="[('commercial_partner_id','=',address_home_id)]"/>
+        </xpath>
         <xpath expr="//group[@string='Status']" position="before">
-            <group string="Legal Information">
-                <field name="legal_address_id" />
+            <group string="Legal Information" attrs="{'invisible':[('legal_address_id','=',False)]}">
                 <group colspan="2">
                     <label for="legal_street" string="Address" />
                     <div>

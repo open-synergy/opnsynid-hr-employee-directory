@@ -84,7 +84,7 @@
 </record>
 
 <record id="hr_job_family_level_action" model="ir.actions.act_window">
-    <field name="name">Job Family Level</field>
+    <field name="name">Job Family Levels</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">hr.job_family_level</field>
     <field name="view_mode">tree,form</field>
@@ -92,10 +92,11 @@
 
 <menuitem
         id="hr_job_family_level_menu"
-        name="Job Family Level"
-        parent="job_family_modelling_configuration_menu"
+        name="Job Family Levels"
+        parent="ssi_hr.menu_organization_configuration"
         action="hr_job_family_level_action"
-        sequence="5"
+        groups="hr_job_family_level_group"
+        sequence="25"
     />
 
 </odoo>

@@ -37,7 +37,7 @@
 </record>
 
 <record id="hr_job_family_grade_action" model="ir.actions.act_window">
-    <field name="name">Job Family Grade</field>
+    <field name="name">Job Family Gradse</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">hr.job_family_grade</field>
     <field name="view_mode">tree,form</field>
@@ -45,10 +45,11 @@
 
 <menuitem
         id="hr_job_family_grade_menu"
-        name="Job Family Grade"
-        parent="job_family_modelling_configuration_menu"
+        name="Job Family Grades"
+        parent="ssi_hr.menu_organization_configuration"
         action="hr_job_family_grade_action"
-        sequence="3"
+        groups="hr_job_family_grade_group"
+        sequence="23"
     />
 
 </odoo>

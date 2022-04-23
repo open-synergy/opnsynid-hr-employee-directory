@@ -4,13 +4,13 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Employee Document Mixin",
-    "version": "14.0.1.0.0",
+    "version": "14.0.2.0.0",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
     "installable": True,
     "depends": [
-        "ssi_hr_employee_extend",
+        "ssi_hr_employee",
     ],
     "data": [],
 }

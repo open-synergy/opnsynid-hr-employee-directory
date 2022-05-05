@@ -20,18 +20,26 @@ class MixinEmployeeDocument(models.AbstractModel):
         comodel_name="hr.employee",
         default=lambda self: self._default_employee_id(),
         required=True,
+        readonly=True,
+        states={"draft": [("readonly", False)]},
     )
     department_id = fields.Many2one(
         string="Department",
         comodel_name="hr.department",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
     )
     manager_id = fields.Many2one(
         string="Manager",
         comodel_name="hr.employee",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
     )
     job_id = fields.Many2one(
         string="Job Position",
         comodel_name="hr.job",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
     )
 
     @api.onchange(

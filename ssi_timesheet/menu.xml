@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <!-- groups="group_hr_timesheet_user" -->
+    <menuitem
+        id="timesheet_menu_root"
+        name="Timesheets"
+        sequence="55"
+        web_icon="hr_timesheet,static/description/icon_timesheet.png"
+    />
+
+    <menuitem
+        id="menu_hr_time_tracking"
+        name="Time Tracking"
+        parent="timesheet_menu_root"
+        sequence="1"
+    />
+
+    <menuitem
+        id="menu_hr_timesheet_configuration"
+        name="Configuration"
+        parent="timesheet_menu_root"
+        sequence="15"
+    />
+
+</odoo>

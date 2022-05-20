@@ -10,9 +10,16 @@ class HrTimesheetComputationItem(models.Model):
     _inherit = ["mixin.master_data"]
     _description = "Timesheet Computation Item"
 
+    DEFAULT_PYTHON_CODE = """# Available variables:
+#  - env: Odoo Environment on which the action is triggered.
+#  - document: record on which the action is triggered; may be void.
+#  - result: Return result, the value is boolean."""
+
     name = fields.Char(
         string="Name",
     )
     python_code = fields.Text(
         string="Python Code",
+        default=DEFAULT_PYTHON_CODE,
+        copy=True,
     )

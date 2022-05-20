@@ -6,7 +6,7 @@
 <data noupdate="1">
 <record id="sequence_timesheet_sheet" model="ir.sequence">
     <field name="name">Default Timseheets</field>
-    <field name="code">hr.timesheet_sheet</field>
+    <field name="code">hr.timesheet</field>
     <field name="prefix">TS/%(range_year)s/</field>
     <field eval="1" name="number_next" />
     <field eval="1" name="number_increment" />

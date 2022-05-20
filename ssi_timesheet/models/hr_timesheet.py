@@ -5,8 +5,8 @@
 from odoo import api, fields, models
 
 
-class HRTimesheetSheet(models.Model):
-    _name = "hr.timesheet_sheet"
+class HRTimesheet(models.Model):
+    _name = "hr.timesheet"
     _inherit = [
         "mixin.transaction_open",
         "mixin.transaction_confirm",
@@ -38,12 +38,12 @@ class HRTimesheetSheet(models.Model):
 
     @api.depends("policy_template_id")
     def _compute_policy(self):
-        _super = super(HRTimesheetSheet, self)
+        _super = super(HRTimesheet, self)
         _super._compute_policy()
 
     @api.model
     def _get_policy_field(self):
-        res = super(HRTimesheetSheet, self)._get_policy_field()
+        res = super(HRTimesheet, self)._get_policy_field()
         policy_field = [
             "open_ok",
             "confirm_ok",
@@ -57,3 +57,10 @@ class HRTimesheetSheet(models.Model):
         ]
         res += policy_field
         return res
+
+    @api.onchange(
+        "employee_id",
+    )
+    def onchange_policy_template_id(self):
+        template_id = self._get_template_policy()
+        self.policy_template_id = template_id

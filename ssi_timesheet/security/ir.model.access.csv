@@ -2,5 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hr_timesheet_computation_item_employee,hr.timesheet_computation_item - user,model_hr_timesheet_computation_item,base.group_user,1,1,1,1
 access_hr_timesheet_computation_item_all,hr.timesheet_computation_item - all,model_hr_timesheet_computation_item,,1,0,0,0
 
-access_hr_timesheet_sheet_employee,hr.timesheet_sheet - user,model_hr_timesheet_sheet,base.group_user,1,1,1,1
-access_hr_timesheet_sheet_all,hr.timesheet_sheet - all,model_hr_timesheet_sheet,,1,0,0,0
+access_hr_timesheet_employee,hr.timesheet - user,model_hr_timesheet,base.group_user,1,1,1,1
+access_hr_timesheet_all,hr.timesheet - all,model_hr_timesheet,,1,0,0,0

@@ -22,11 +22,51 @@ class HRTimesheet(models.Model):
     _after_approved_method = "action_done"
     _create_sequence_state = "open"
 
+    # Attributes related to add element on view automatically
+    _automatically_insert_view_element = True
+
+    # Attributes related to add element on form view automatically
+    _automatically_insert_multiple_approval_page = True
+    _automatically_insert_done_policy_fields = False
+    _automatically_insert_done_button = False
+
+    _statusbar_visible_label = "draft,open,confirm,done"
+
+    _policy_field_order = [
+        "open_ok",
+        "confirm_ok",
+        "approve_ok",
+        "reject_ok",
+        "restart_approval_ok",
+        "cancel_ok",
+        "restart_ok",
+        "manual_number_ok",
+    ]
+
+    _header_button_order = [
+        "action_open",
+        "action_confirm",
+        "action_approve_approval",
+        "action_reject_approval",
+        "%(ssi_transaction_cancel_mixin.base_select_cancel_reason_action)d",
+        "action_restart",
+    ]
+
+    # Attributes related to add element on search view automatically
+    _state_filter_order = [
+        "dom_draft",
+        "dom_open",
+        "dom_confirm",
+        "dom_reject",
+        "dom_done",
+        "dom_cancel",
+    ]
+
     state = fields.Selection(
         string="State",
         selection=[
             ("draft", "Draft"),
-            ("open", "Confirm"),
+            ("open", "In Progress"),
             ("confirm", "Waiting for Approval"),
             ("done", "Done"),
             ("cancel", "Cancelled"),

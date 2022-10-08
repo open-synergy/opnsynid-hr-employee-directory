@@ -49,6 +49,7 @@
         parent="ssi_hr.menu_career_configuration"
         action="hr_employment_status_action"
         sequence="1"
+        groups="hr_employment_status_group"
     />
 
 </odoo>

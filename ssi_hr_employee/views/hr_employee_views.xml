@@ -79,4 +79,60 @@
         </field>
     </record>
 
+<record id="hr_employee_self_view_form" model="ir.ui.view">
+    <field name="name">hr.employee - form</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+            </header>
+            <sheet>
+                <div name="button_box" class="oe_button_box">
+                </div>
+                <field
+                        name="image_1920"
+                        widget='image'
+                        class="oe_avatar"
+                        options='{"zoom": true, "preview_image":"image_128"}'
+                        readonly="1"
+                    />
+                <div class="oe_title">
+                    <h1 class="d-flex">
+                        <field
+                                name="name"
+                                placeholder="Employee's Name"
+                                required="True"
+                                readonly="1"
+                            />
+                    </h1>
+                </div>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="hr_employee_self_action" model="ir.actions.server">
+    <field name="name">My Employment Information</field>
+    <field name="model_id" ref="hr.model_hr_employee" />
+    <field name="state">code</field>
+    <field name="code">
+action = {
+    "name": "My Employment Information",
+    "res_model": "hr.employee",
+    "view_mode": "form",
+    "view_id": env.ref("ssi_hr_employee.hr_employee_self_view_form").id,
+    "res_id": env.user.employee_id.id,
+    "type": "ir.actions.act_window",
+    "target": "inline",
+}
+    </field>
+</record>
+
+<menuitem
+        id="hr_employee_self_menu"
+        name="My Employment Information"
+        parent="ssi_hr.menu_root_human_resource"
+        action="hr_employee_self_action"
+        sequence="0"
+    />
 </odoo>

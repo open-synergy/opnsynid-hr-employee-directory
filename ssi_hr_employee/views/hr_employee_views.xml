@@ -82,6 +82,7 @@
 <record id="hr_employee_self_view_form" model="ir.ui.view">
     <field name="name">hr.employee - form</field>
     <field name="model">hr.employee</field>
+    <field name="priority" eval="100" />
     <field name="arch" type="xml">
         <form>
             <header>

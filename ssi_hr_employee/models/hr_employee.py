@@ -98,6 +98,9 @@ class HrEmployeeBase(models.AbstractModel):
     date_termination = fields.Date(
         string="Termination Date",
     )
+    date_permanent = fields.Date(
+        string="Permanent Date",
+    )
     year_work_longetivity = fields.Integer(
         string="Year Work Longetivity",
         compute="_compute_work_longetivity",

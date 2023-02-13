@@ -27,6 +27,7 @@
                 <xpath expr="//field[@name='job_id']" position="before">
                     <field name="date_join" />
                     <field name="date_termination" />
+                    <field name="date_permanent" />
                     <label for="year_work_longetivity" string="Work Longetivity" />
                     <div>
                           <field name="year_work_longetivity" class="oe_inline" /> Years

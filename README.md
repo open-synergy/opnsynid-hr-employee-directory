@@ -14,7 +14,12 @@ opnsynid-hr-employee-directory
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[ssi_employee_document_mixin](ssi_employee_document_mixin/) | 14.0.3.0.0 |  | Employee Document Mixin
+[ssi_hr_employee](ssi_hr_employee/) | 14.0.2.5.0 |  | HR Employee
 
 [//]: # (end addons)
 

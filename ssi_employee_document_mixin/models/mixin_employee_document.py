@@ -41,6 +41,11 @@ class MixinEmployeeDocument(models.AbstractModel):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+    employee_partner_id = fields.Many2one(
+        string="Employee Partner",
+        related="employee_id.address_home_id",
+        store=False,
+    )
 
     @api.onchange(
         "employee_id",

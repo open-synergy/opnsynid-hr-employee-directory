@@ -4,10 +4,29 @@
 
 from odoo import api, fields, models
 
+from odoo.addons.ssi_decorator import ssi_decorator
+
 
 class MixinEmployeeDocument(models.AbstractModel):
     _name = "mixin.employee_document"
+    _inherit = [
+        "mixin.decorator",
+    ]
     _description = "Mixin for Document With Employee Information"
+
+    _search_by_employee = False
+    _search_by_employee_xpath = "//field[last()]"
+
+    @ssi_decorator.insert_on_search_view()
+    def _employee_document_insert_search_element(self, view_arch):
+        if self._search_by_employee:
+            view_arch = self._add_view_element(
+                view_arch=view_arch,
+                qweb_template_xml_id="ssi_employee_document_mixin.employee_document_search",
+                xpath=self._search_by_employee_xpath,
+                position="after",
+            )
+        return view_arch
 
     @api.model
     def _default_employee_id(self):

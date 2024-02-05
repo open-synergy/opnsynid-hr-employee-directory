@@ -12,6 +12,9 @@
     "depends": [
         "ssi_hr_employee",
         "ssi_transaction_mixin",
+        "ssi_decorator",
     ],
-    "data": [],
+    "data": [
+        "templates/employee_document_templates.xml",
+    ],
 }

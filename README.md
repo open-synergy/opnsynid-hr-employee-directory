@@ -20,6 +20,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [ssi_employee_document_mixin](ssi_employee_document_mixin/) | 14.0.4.0.0 |  | Employee Document Mixin
 [ssi_hr_employee](ssi_hr_employee/) | 14.0.2.5.1 |  | HR Employee
+[ssi_hr_employee_stock](ssi_hr_employee_stock/) | 14.0.1.0.0 |  | Employee + Stock Integration
 
 [//]: # (end addons)
 

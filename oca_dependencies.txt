@@ -1,4 +1,5 @@
 # See https://github.com/OCA/odoo-community.org/blob/master/website/Contribution/CONTRIBUTING.rst#oca_dependencies-txt
 
 ssi-mixin https://github.com/open-synergy/ssi-mixin.git 14.0
+ssi-stock https://github.com/open-synergy/ssi-stock.git 14.0
 opnsynid-hr https://github.com/open-synergy/opnsynid-hr.git 14.0

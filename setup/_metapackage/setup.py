@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for open-synergy-opnsynid-hr-employee-directory Odoo addons",
     version=version,
     install_requires=[
+        'odoo14-addon-ssi_employee_bank_account_mixin',
         'odoo14-addon-ssi_employee_document_mixin',
         'odoo14-addon-ssi_hr_employee',
         'odoo14-addon-ssi_hr_employee_stock',

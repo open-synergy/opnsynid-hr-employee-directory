@@ -46,3 +46,5 @@ class MixinEmployeeBankAccount(models.AbstractModel):
     )
     def onchange_employee_bank_account_id(self):
         self.employee_bank_account_id = False
+        if self.employee_id:
+            self.employee_bank_account_id = self.employee_id.bank_account_id

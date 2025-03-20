@@ -1,1 +1,4 @@
 odoo14-addon-ssi-stock
+odoo14-addon-ssi-hr-employee-experience-from-work-address
+odoo14-addon-ssi-hr-employee-language-from-work-address
+odoo14-addon-ssi-hr-employee-personal-from-work-address

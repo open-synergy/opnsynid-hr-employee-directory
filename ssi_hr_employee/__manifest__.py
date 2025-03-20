@@ -1,7 +1,7 @@
 # Copyright 2022 OpenSynergy Indonesia
 # Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-# pylint: disable=locally-disabled, manifest-required-author
+# pylint: disable=C8101
 {
     "name": "HR Employee",
     "version": "14.0.2.5.1",
@@ -10,7 +10,9 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": [
-        "ssi_hr",
+        "ssi_hr_employee_personal_from_work_address",
+        "ssi_hr_employee_experience_from_work_address",
+        "ssi_hr_employee_language_from_work_address",
         "ssi_master_data_mixin",
     ],
     "data": [

@@ -18,10 +18,10 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[ssi_employee_bank_account_mixin](ssi_employee_bank_account_mixin/) | 14.0.1.0.1 |  | Employee Bank Account Mixin
-[ssi_employee_document_mixin](ssi_employee_document_mixin/) | 14.0.4.0.0 |  | Employee Document Mixin
-[ssi_hr_employee](ssi_hr_employee/) | 14.0.2.5.1 |  | HR Employee
-[ssi_hr_employee_stock](ssi_hr_employee_stock/) | 14.0.1.0.0 |  | Employee + Stock Integration
+[ssi_employee_bank_account_mixin](ssi_employee_bank_account_mixin/) | 14.0.1.1.0 |  | Employee Bank Account Mixin
+[ssi_employee_document_mixin](ssi_employee_document_mixin/) | 14.0.4.1.0 |  | Employee Document Mixin
+[ssi_hr_employee](ssi_hr_employee/) | 14.0.2.6.0 |  | HR Employee
+[ssi_hr_employee_stock](ssi_hr_employee_stock/) | 14.0.1.1.0 |  | Employee + Stock Integration
 
 [//]: # (end addons)
 

@@ -137,3 +137,6 @@ class HrEmployeeBase(models.AbstractModel):
         employee_ids = self.search([])
         for employee in employee_ids:
             employee._compute_work_longetivity()
+
+    def action_dummy_save(self):
+        return True

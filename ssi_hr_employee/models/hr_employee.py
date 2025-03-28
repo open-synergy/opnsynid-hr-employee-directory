@@ -38,6 +38,11 @@ class HrEmployeeBase(models.AbstractModel):
     organization_unit_id = fields.Many2one(
         string="Organization Unit", comodel_name="hr.department"
     )
+    main_job_description_ids = fields.Many2many(
+        string="Main Job Description",
+        comodel_name="job_description",
+        related="job_id.job_description_ids",
+    )
 
     @api.onchange("organization_unit_id")
     def _get_domain_department(self):

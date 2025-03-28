@@ -11,3 +11,5 @@ access_hr_job_family_configurator,hr.job_family - configurator,model_hr_job_fami
 access_hr_job_family_all,hr.job_family - all,model_hr_job_family,,1,0,0,0
 access_hr_job_family_level_configurator,hr.job_family_level - configurator,model_hr_job_family_level,hr_job_family_level_group,1,1,1,1
 access_hr_job_family_level_all,hr.job_family_level - all,model_hr_job_family_level,,1,0,0,0
+access_job_description_configurator,job_description - configurator,model_job_description,job_description_group,1,1,1,1
+access_job_description_all,job_description - all,model_job_description,,1,0,0,0

@@ -33,6 +33,13 @@ class HrJob(models.Model):
         column1="job_id",
         column2="job_grade_id",
     )
+    job_description_ids = fields.Many2many(
+        string="Job Descriptions",
+        comodel_name="job_description",
+        relation="rel_job_position_2_job_description",
+        column1="job_position_id",
+        column2="job_description",
+    )
 
     def onchange_job_family_level_id(self, job_family_level_id):
         value = self._get_value_before_onchange_job_family_level_id()

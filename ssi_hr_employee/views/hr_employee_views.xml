@@ -129,6 +129,10 @@
                 </group>
             </group>
             <notebook>
+                <page name="job_desc" string="Job Description">
+                    <separator string="Main" />
+                    <field name="main_job_description_ids" />
+                </page>
                 <page name="personal_information" string="Private Information">
                     <group>
                         <group string="Work Permit" name="work_permit">

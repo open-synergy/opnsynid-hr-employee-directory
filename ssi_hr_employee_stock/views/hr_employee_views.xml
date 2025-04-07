@@ -27,7 +27,7 @@
                         icon="fa-eraser"
                     />
             </xpath>
-            <xpath expr="//page[last()]" position="after">
+            <xpath expr="//notebook" position="inside">
                 <page string="Inventory" name="inventory">
                     <group name="inventory_1" colspan="4" col="2">
                         <group name="inventory_1_1" colspan="1" col="2">

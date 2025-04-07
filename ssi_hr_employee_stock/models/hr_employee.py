@@ -5,9 +5,8 @@
 from odoo import fields, models
 
 
-class HrEmployeeBase(models.AbstractModel):
-    _name = "hr.employee.base"
-    _inherit = "hr.employee.base"
+class HrEmployee(models.Model):
+    _inherit = "hr.employee"
 
     location_id = fields.Many2one(
         string="Location",

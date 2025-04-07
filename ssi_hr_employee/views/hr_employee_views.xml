@@ -37,6 +37,12 @@
                         /> Months
                     </div>
                 </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page name="job_desc" string="Job Description">
+                        <separator string="Main" />
+                        <field name="main_job_description_ids" />
+                    </page>
+                </xpath>
                 <xpath
                     expr="//page[@name='personal_information']/group[1]/group[1]"
                     position="after"

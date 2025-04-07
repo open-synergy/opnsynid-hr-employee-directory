@@ -38,6 +38,11 @@
                         domain="[('id','in',allowed_job_grade_ids)]"
                     />
                 </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page name="job_desc" string="Job Description">
+                        <field name="job_description_ids" />
+                    </page>
+                </xpath>
             </data>
         </field>
     </record>

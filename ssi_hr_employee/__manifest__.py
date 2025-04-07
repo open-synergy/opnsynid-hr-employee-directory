@@ -26,6 +26,7 @@
         "views/hr_job_family_views.xml",
         "views/hr_job_family_level_views.xml",
         "views/hr_job_views.xml",
+        "views/job_description_views.xml",
         "views/hr_employee_views.xml",
     ],
     "demo": [

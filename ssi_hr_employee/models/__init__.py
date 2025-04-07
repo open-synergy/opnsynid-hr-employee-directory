@@ -10,3 +10,4 @@ from . import hr_job_family
 from . import hr_job_family_level
 from . import hr_job
 from . import hr_employee
+from . import job_description

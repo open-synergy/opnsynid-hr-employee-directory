@@ -28,6 +28,8 @@
                     <field name="date_join" />
                     <field name="date_termination" />
                     <field name="date_permanent" />
+                    <field name="date_contract_start" />
+                    <field name="date_contract_end" />
                     <label for="year_work_longetivity" string="Work Longetivity" />
                     <div>
                           <field name="year_work_longetivity" class="oe_inline" /> Years

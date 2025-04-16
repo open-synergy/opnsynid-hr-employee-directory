@@ -6,7 +6,8 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class HrEmployeeBase(models.AbstractModel):
@@ -106,6 +107,12 @@ class HrEmployeeBase(models.AbstractModel):
     date_permanent = fields.Date(
         string="Permanent Date",
     )
+    date_contract_start = fields.Date(
+        string="Contract Start Date",
+    )
+    date_contract_end = fields.Date(
+        string="Contract End Date",
+    )
     year_work_longetivity = fields.Integer(
         string="Year Work Longetivity",
         compute="_compute_work_longetivity",
@@ -145,3 +152,16 @@ class HrEmployeeBase(models.AbstractModel):
 
     def action_dummy_save(self):
         return True
+
+    @api.constrains(
+        "date_contract_start",
+        "date_contract_end",
+    )
+    def _check_date_contract_start_end(self):
+        for record in self:
+            if record.date_contract_start and record.date_contract_end:
+                strWarning = _(
+                    "Contract End Date must be greater than Contract Start Date"
+                )
+                if record.date_contract_end < record.date_contract_start:
+                    raise UserError(strWarning)

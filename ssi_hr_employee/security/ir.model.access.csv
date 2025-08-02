@@ -13,3 +13,7 @@ access_hr_job_family_level_configurator,hr.job_family_level - configurator,model
 access_hr_job_family_level_all,hr.job_family_level - all,model_hr_job_family_level,,1,0,0,0
 access_job_description_configurator,job_description - configurator,model_job_description,job_description_group,1,1,1,1
 access_job_description_all,job_description - all,model_job_description,,1,0,0,0
+access_employee_skill_configurator,employee_skill - configurator,model_employee_skill,employee_skill_group,1,1,1,1
+access_employee_skill_all,employee_skill - all,model_employee_skill,,1,0,0,0
+access_employee_competency_configurator,employee_competency - configurator,model_employee_competency,employee_competency_group,1,1,1,1
+access_employee_competency_all,employee_competency - all,model_employee_competency,,1,0,0,0

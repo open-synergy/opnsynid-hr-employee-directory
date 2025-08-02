@@ -27,11 +27,15 @@
         "views/hr_job_family_level_views.xml",
         "views/hr_job_views.xml",
         "views/job_description_views.xml",
+        "views/employee_skill_views.xml",
+        "views/employee_competency_views.xml",
         "views/hr_employee_views.xml",
     ],
     "demo": [
         "demo/hr_employment_status_demo.xml",
         "demo/hr_job_grade_category_demo.xml",
         "demo/hr_job_grade_demo.xml",
+        "demo/employee_skill.xml",
+        "demo/employee_competency.xml",
     ],
 }

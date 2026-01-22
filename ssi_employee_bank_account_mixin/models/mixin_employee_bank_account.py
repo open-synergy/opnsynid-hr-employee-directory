@@ -16,6 +16,7 @@ class MixinEmployeeBankAccount(models.AbstractModel):
         string="Allowed Bank Accounts",
         comodel_name="res.partner.bank",
         compute="_compute_allowed_bank_account_ids",
+        compute_sudo=True,
         store=False,
     )
     employee_bank_account_id = fields.Many2one(

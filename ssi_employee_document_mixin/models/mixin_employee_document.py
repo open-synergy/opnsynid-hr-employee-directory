@@ -63,6 +63,7 @@ class MixinEmployeeDocument(models.AbstractModel):
     employee_partner_id = fields.Many2one(
         string="Employee Partner",
         related="employee_id.address_home_id",
+        compute_sudo=True,
         store=False,
     )
 

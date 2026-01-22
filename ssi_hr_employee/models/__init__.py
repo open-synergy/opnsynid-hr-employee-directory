@@ -11,3 +11,5 @@ from . import hr_job_family_level
 from . import hr_job
 from . import hr_employee
 from . import job_description
+from . import employee_skill
+from . import employee_competency

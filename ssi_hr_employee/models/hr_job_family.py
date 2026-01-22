@@ -50,6 +50,7 @@ class HrJobFamily(models.Model):
         column1="job_family_id",
         column2="job_grade_id",
         compute="_compute_job_grade_ids",
+        compute_sudo=True,
         store=True,
         readonly=True,
     )

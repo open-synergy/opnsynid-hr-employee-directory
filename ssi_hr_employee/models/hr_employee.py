@@ -34,6 +34,7 @@ class HrEmployeeBase(models.AbstractModel):
         string="Job Grades",
         comodel_name="hr.job_grade",
         compute="_compute_job_grade",
+        compute_sudo=True,
         store=False,
     )
     organization_unit_id = fields.Many2one(
@@ -43,6 +44,7 @@ class HrEmployeeBase(models.AbstractModel):
         string="Main Job Description",
         comodel_name="job_description",
         related="job_id.job_description_ids",
+        compute_sudo=True,
     )
 
     @api.onchange("organization_unit_id")
@@ -62,38 +64,45 @@ class HrEmployeeBase(models.AbstractModel):
     legal_street = fields.Char(
         string="Street",
         related="legal_address_id.street",
+        compute_sudo=True,
         store=True,
     )
     legal_street2 = fields.Char(
         string="Street2",
         related="legal_address_id.street2",
+        compute_sudo=True,
         store=True,
     )
     legal_zip = fields.Char(
         string="ZIP",
         related="legal_address_id.zip",
+        compute_sudo=True,
         store=True,
     )
     legal_city = fields.Char(
         string="City",
         related="legal_address_id.city",
+        compute_sudo=True,
         store=True,
     )
     legal_state_id = fields.Many2one(
         string="State",
         comodel_name="res.country.state",
         related="legal_address_id.state_id",
+        compute_sudo=True,
         store=True,
     )
     legal_country_id = fields.Many2one(
         string="Country",
         comodel_name="res.country",
         related="legal_address_id.country_id",
+        compute_sudo=True,
         store=True,
     )
     legal_phone = fields.Char(
         string="Phone",
         related="legal_address_id.phone",
+        compute_sudo=True,
         readonly=True,
         store=True,
     )
@@ -116,11 +125,13 @@ class HrEmployeeBase(models.AbstractModel):
     year_work_longetivity = fields.Integer(
         string="Year Work Longetivity",
         compute="_compute_work_longetivity",
+        compute_sudo=True,
         store=True,
     )
     month_work_longetivity = fields.Integer(
         string="Month Work Longetivity",
         compute="_compute_work_longetivity",
+        compute_sudo=True,
         store=True,
     )
 

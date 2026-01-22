@@ -24,6 +24,7 @@ class HrJob(models.Model):
         string="Job Grades",
         comodel_name="hr.job_grade",
         compute="_compute_job_grade",
+        compute_sudo=True,
         store=False,
     )
     job_grade_ids = fields.Many2many(

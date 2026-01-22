@@ -54,6 +54,7 @@ class HrJobFamilyLevel(models.Model):
         string="Job Grades",
         comodel_name="hr.job_grade",
         compute="_compute_job_grade",
+        compute_sudo=True,
         store=False,
     )
     job_grade_ids = fields.Many2many(
@@ -63,6 +64,7 @@ class HrJobFamilyLevel(models.Model):
         column1="job_family_level_id",
         column2="job_grade_id",
         compute="_compute_job_grade_ids",
+        compute_sudo=True,
         store=True,
     )
     min_job_grade_id = fields.Many2one(

@@ -6,6 +6,14 @@ from odoo import api, fields, models
 
 
 class MixinEmployeeBankAccount(models.AbstractModel):
+    """
+    Abstract mixin providing employee bank account selection fields and logic.
+
+    Inherits from mixin.employee_document to provide employee context, and adds
+    fields to filter and select the employee's bank account based on
+    their home address contact.
+    """
+
     _name = "mixin.employee_bank_account"
     _inherit = [
         "mixin.employee_document",

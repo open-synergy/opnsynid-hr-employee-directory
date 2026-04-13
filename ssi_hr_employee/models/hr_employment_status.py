@@ -6,6 +6,14 @@ from odoo import fields, models
 
 
 class HrEmploymentStatus(models.Model):
+    """
+    Represents the employment status of an employee.
+
+    Used to classify employees by their contract type or work arrangement
+    (e.g., permanent, contract, probation). Inherits master data fields
+    such as name, code, active, and note.
+    """
+
     _name = "hr.employment_status"
     _inherit = ["mixin.master_data"]
     _description = "Employment Status"

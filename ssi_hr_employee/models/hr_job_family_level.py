@@ -7,6 +7,14 @@ from odoo.exceptions import UserError
 
 
 class HrJobFamilyLevel(models.Model):
+    """
+    Represents a specific level within a job family.
+
+    Combines a job family with a job family grade and narrows the allowable
+    grade range to a min-max subset. Provides computed fields for the set of
+    grades applicable at this level.
+    """
+
     _name = "hr.job_family_level"
     _inherit = ["mixin.master_data"]
     _description = "Job Family Level"

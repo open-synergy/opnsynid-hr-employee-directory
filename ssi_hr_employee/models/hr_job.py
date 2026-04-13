@@ -6,6 +6,14 @@ from odoo import api, fields, models
 
 
 class HrJob(models.Model):
+    """
+    Extension of the standard Job Position model.
+
+    Adds job family level, computed allowed job grades, job grade assignments,
+    and job description relationships to support the organizational grading
+    and competency framework.
+    """
+
     _inherit = ["hr.job"]
 
     @api.depends("job_family_level_id")

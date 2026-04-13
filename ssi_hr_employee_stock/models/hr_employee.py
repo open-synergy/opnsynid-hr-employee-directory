@@ -6,6 +6,14 @@ from odoo import api, fields, models
 
 
 class HrEmployee(models.Model):
+    """
+    Extension of hr.employee with stock location integration.
+
+    Adds a dedicated internal stock location per employee and a computed
+    field for the current warehouse derived from the employee's work address.
+    Provides action methods to create or delete the employee's stock location.
+    """
+
     _inherit = "hr.employee"
 
     location_id = fields.Many2one(

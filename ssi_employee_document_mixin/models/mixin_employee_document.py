@@ -8,6 +8,14 @@ from odoo.addons.ssi_decorator import ssi_decorator
 
 
 class MixinEmployeeDocument(models.AbstractModel):
+    """
+    Abstract mixin providing employee-related fields for transactional documents.
+
+    Adds employee, department, manager, and job position fields, with onchange
+    methods to auto-populate related information when the employee is selected.
+    Optionally injects an employee filter element into the search view.
+    """
+
     _name = "mixin.employee_document"
     _inherit = [
         "mixin.decorator",

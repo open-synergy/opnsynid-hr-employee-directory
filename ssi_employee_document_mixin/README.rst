@@ -11,18 +11,6 @@ job position) to transactional documents, with automatic population via
 onchange methods when the employee is selected.
 
 
-Installation
-============
-
-To install this module, you need to:
-
-1.  Clone the branch 14.0 of the repository https://github.com/open-synergy/opnsynid-hr-employee-directory
-2.  Add the path to this repository in your configuration (addons-path)
-3.  Update the module list (Must be on developer mode)
-4.  Go to menu *Apps -> Apps -> Main Apps*
-5.  Search For *Employee Document Mixin*
-6.  Install the module
-
 Bug Tracker
 ===========
 

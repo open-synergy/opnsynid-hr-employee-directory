@@ -11,6 +11,14 @@ from odoo.exceptions import UserError
 
 
 class HrEmployeeBase(models.AbstractModel):
+    """
+    Extension of hr.employee.base with additional HR directory fields.
+
+    Adds employment status, job grade, organization unit, legal address,
+    join/termination/contract dates, and work longevity computation to
+    the base employee abstract model.
+    """
+
     _inherit = "hr.employee.base"
 
     @api.depends("job_id")

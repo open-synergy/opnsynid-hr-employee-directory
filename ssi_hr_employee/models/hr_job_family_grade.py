@@ -6,6 +6,13 @@ from odoo import fields, models
 
 
 class HrJobFamilyGrade(models.Model):
+    """
+    Represents the grade classification within a job family.
+
+    Used to distinguish seniority levels (e.g., junior, mid, senior)
+    within a job family grouping. Acts as a master data reference.
+    """
+
     _name = "hr.job_family_grade"
     _inherit = ["mixin.master_data"]
     _description = "Job Family Grade"

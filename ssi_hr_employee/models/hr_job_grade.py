@@ -6,6 +6,14 @@ from odoo import fields, models
 
 
 class HrJobGrade(models.Model):
+    """
+    Represents a job grade used in the HR grading framework.
+
+    Assigned to job positions and employees to indicate their compensation
+    and responsibility level within the organization. Ordered by sequence
+    to establish a grade hierarchy.
+    """
+
     _name = "hr.job_grade"
     _inherit = ["mixin.master_data"]
     _description = "Job Grade"

@@ -1,12 +1,11 @@
 <!-- Copyright 2025 PT. Simetri Sinergi Indonesia -->
 <!-- License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <data noupdate="0">
 
         <record
-            id="demo_employee_competency_analytical_thinking"
-            model="employee_competency"
-        >
+        id="demo_employee_competency_analytical_thinking"
+        model="employee_competency"
+    >
             <field name="name">Analytical Thinking</field>
             <field name="code">COMP-ANL</field>
         </record>
@@ -22,9 +21,9 @@
         </record>
 
         <record
-            id="demo_employee_competency_decision_making"
-            model="employee_competency"
-        >
+        id="demo_employee_competency_decision_making"
+        model="employee_competency"
+    >
             <field name="name">Decision Making</field>
             <field name="code">COMP-DCM</field>
         </record>
@@ -40,36 +39,35 @@
         </record>
 
         <record
-            id="demo_employee_competency_project_management"
-            model="employee_competency"
-        >
+        id="demo_employee_competency_project_management"
+        model="employee_competency"
+    >
             <field name="name">Project Management</field>
             <field name="code">COMP-PRJ</field>
         </record>
 
         <record
-            id="demo_employee_competency_emotional_intelligence"
-            model="employee_competency"
-        >
+        id="demo_employee_competency_emotional_intelligence"
+        model="employee_competency"
+    >
             <field name="name">Emotional Intelligence</field>
             <field name="code">COMP-EMO</field>
         </record>
 
         <record
-            id="demo_employee_competency_change_management"
-            model="employee_competency"
-        >
+        id="demo_employee_competency_change_management"
+        model="employee_competency"
+    >
             <field name="name">Change Management</field>
             <field name="code">COMP-CHM</field>
         </record>
 
         <record
-            id="demo_employee_competency_result_orientation"
-            model="employee_competency"
-        >
+        id="demo_employee_competency_result_orientation"
+        model="employee_competency"
+    >
             <field name="name">Result Orientation</field>
             <field name="code">COMP-RES</field>
         </record>
 
-    </data>
 </odoo>

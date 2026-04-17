@@ -2,13 +2,12 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=======================
-Employee Document Mixin
-=======================
+============================
+HR Employee + Operating Unit
+============================
 
-Mixin module that adds employee-related fields (employee, department, manager,
-job position) to transactional documents, with automatic population via
-onchange methods when the employee is selected.
+Integrates hr.employee with Operating Unit support.
+Allows employee records to be scoped to a specific operating unit.
 
 
 Bug Tracker
@@ -26,7 +25,7 @@ Credits
 Contributors
 ------------
 
-* Andhitia Rama <andhitia.r@gmail.com>
+* OpenSynergy Indonesia <info@open-synergy.com>
 
 Maintainer
 ----------

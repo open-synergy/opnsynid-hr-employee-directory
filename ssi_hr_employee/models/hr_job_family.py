@@ -7,6 +7,14 @@ from odoo.exceptions import UserError
 
 
 class HrJobFamily(models.Model):
+    """
+    Represents a job family grouping related job positions.
+
+    Defines a grade range (min to max) that applies to all positions
+    within this family. The list of applicable grades is computed
+    automatically based on the configured sequence of grades.
+    """
+
     _name = "hr.job_family"
     _inherit = ["mixin.master_data"]
     _description = "Job Family"

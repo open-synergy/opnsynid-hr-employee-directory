@@ -6,6 +6,13 @@ from odoo import fields, models
 
 
 class HrJobGradeCategory(models.Model):
+    """
+    Represents a category grouping multiple job grades.
+
+    Used to classify and organize job grades into broader compensation
+    or responsibility bands within the grading framework.
+    """
+
     _name = "hr.job_grade_category"
     _inherit = ["mixin.master_data"]
     _description = "Job Grade Category"

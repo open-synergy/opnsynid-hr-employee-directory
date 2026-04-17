@@ -6,6 +6,14 @@ from odoo import models
 
 
 class JobDescription(models.Model):
+    """
+    Represents a job description entry.
+
+    Used as master data to define the responsibilities and tasks
+    associated with job positions. Multiple descriptions can be linked
+    to a single job position.
+    """
+
     _name = "job_description"
     _inherit = ["mixin.master_data"]
     _description = "Job Description"

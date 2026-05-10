@@ -37,7 +37,7 @@ class MixinEmployeeDocument(models.AbstractModel):
         return view_arch
 
     @api.model
-    def _default_employee_id(self):
+    def _default_employee_id(self):  # pylint: disable=inconsistent-return-statements
         employees = self.env.user.employee_ids
         if len(employees) > 0:
             return employees[0].id

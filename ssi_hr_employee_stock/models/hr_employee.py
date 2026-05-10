@@ -35,7 +35,7 @@ class HrEmployee(models.Model):
     def _compute_current_warehouse_id(self):
         for record in self:
             result = False
-            Warehouse = self.env["stock.warehouse"]
+            Warehouse = self.env["stock.warehouse"]  # pylint: disable=invalid-name
             if record.address_id:
                 if record.address_id.parent_id:
                     parent = record.address_id.parent_id
@@ -70,7 +70,9 @@ class HrEmployee(models.Model):
             }
         )
 
-    def _delete_employee_location(self):
+    def _delete_employee_location(  # pylint: disable=inconsistent-return-statements
+        self,
+    ):
         self.ensure_one()
         location = self.location_id
         if not location:

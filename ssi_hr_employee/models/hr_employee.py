@@ -59,7 +59,7 @@ class HrEmployeeBase(models.AbstractModel):
     def _get_domain_department(self):
         domain = {}
         if self.organization_unit_id:
-            self.department_id = False
+            self.department_id = False  # pylint: disable=attribute-defined-outside-init
             domain = {
                 "department_id": [("id", "child_of", [self.organization_unit_id.id])]
             }
@@ -165,7 +165,7 @@ class HrEmployeeBase(models.AbstractModel):
 
     @api.model
     def cron_update_longetivity(self):
-        employee_ids = self.search([])
+        employee_ids = self.search([])  # pylint: disable=no-search-all
         for employee in employee_ids:
             employee._compute_work_longetivity()
 
@@ -179,7 +179,7 @@ class HrEmployeeBase(models.AbstractModel):
     def _check_date_contract_start_end(self):
         for record in self:
             if record.date_contract_start and record.date_contract_end:
-                strWarning = _(
+                strWarning = _(  # pylint: disable=invalid-name
                     "Contract End Date must be greater than Contract Start Date"
                 )
                 if record.date_contract_end < record.date_contract_start:

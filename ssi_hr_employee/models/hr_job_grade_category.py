@@ -5,7 +5,7 @@
 from odoo import fields, models
 
 
-class HrJobGradeCategory(models.Model):
+class HrJobGradeCategory(models.Model):  # pylint: disable=too-few-public-methods
     """
     Represents a category grouping multiple job grades.
 

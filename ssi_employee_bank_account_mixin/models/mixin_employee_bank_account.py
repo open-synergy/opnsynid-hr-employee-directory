@@ -5,7 +5,9 @@
 from odoo import api, fields, models
 
 
-class MixinEmployeeBankAccount(models.AbstractModel):
+class MixinEmployeeBankAccount(
+    models.AbstractModel
+):  # pylint: disable=too-few-public-methods
     """
     Abstract mixin providing employee bank account selection fields and logic.
 

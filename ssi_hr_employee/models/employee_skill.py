@@ -5,7 +5,7 @@
 from odoo import models
 
 
-class EmployeeSkill(models.Model):
+class EmployeeSkill(models.Model):  # pylint: disable=too-few-public-methods
     """
     Represents a skill that can be associated with employees.
 

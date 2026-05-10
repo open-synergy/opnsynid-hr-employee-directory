@@ -5,7 +5,7 @@
 from odoo import models
 
 
-class JobDescription(models.Model):
+class JobDescription(models.Model):  # pylint: disable=too-few-public-methods
     """
     Represents a job description entry.
 

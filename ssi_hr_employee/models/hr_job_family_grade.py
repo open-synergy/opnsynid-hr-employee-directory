@@ -5,7 +5,7 @@
 from odoo import fields, models
 
 
-class HrJobFamilyGrade(models.Model):
+class HrJobFamilyGrade(models.Model):  # pylint: disable=too-few-public-methods
     """
     Represents the grade classification within a job family.
 

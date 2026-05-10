@@ -5,7 +5,7 @@
 from odoo import fields, models
 
 
-class HrEmploymentStatus(models.Model):
+class HrEmploymentStatus(models.Model):  # pylint: disable=too-few-public-methods
     """
     Represents the employment status of an employee.
 

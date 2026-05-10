@@ -5,7 +5,7 @@
 from odoo import api, fields, models
 
 
-class HrJob(models.Model):
+class HrJob(models.Model):  # pylint: disable=too-few-public-methods
     """
     Extension of the standard Job Position model.
 

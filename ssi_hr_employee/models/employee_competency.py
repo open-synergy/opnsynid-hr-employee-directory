@@ -5,7 +5,7 @@
 from odoo import models
 
 
-class EmployeeCompetency(models.Model):
+class EmployeeCompetency(models.Model):  # pylint: disable=too-few-public-methods
     """
     Represents a competency that can be associated with employees.
 

@@ -6,7 +6,7 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
-class HrJobFamily(models.Model):
+class HrJobFamily(models.Model):  # pylint: disable=too-few-public-methods
     """
     Represents a job family grouping related job positions.
 
@@ -27,7 +27,7 @@ class HrJobFamily(models.Model):
     )
     def _compute_job_grade_ids(self):
         obj_jg = self.env["hr.job_grade"]
-        job_grade_ids = obj_jg.search([]).ids
+        job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         for jf in self:
             result = []
             if jf.min_job_grade_id and jf.max_job_grade_id:
@@ -69,7 +69,7 @@ class HrJobFamily(models.Model):
     )
     def _check_min_max_grade(self):
         obj_jg = self.env["hr.job_grade"]
-        job_grade_ids = obj_jg.search([]).ids
+        job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         msg = _("Wrong Max Min Grade")
         for jf in self:
             if jf.min_job_grade_id and jf.max_job_grade_id:

@@ -34,7 +34,7 @@ class HrJobFamilyLevel(models.Model):
     )
     def _compute_job_grade_ids(self):
         obj_jg = self.env["hr.job_grade"]
-        job_grade_ids = obj_jg.search([]).ids
+        job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         for jf in self:
             result = []
             if jf.min_job_grade_id and jf.max_job_grade_id:
@@ -86,7 +86,7 @@ class HrJobFamilyLevel(models.Model):
         required=True,
     )
 
-    def name_get(self):
+    def name_get(self):  # pylint: disable=deprecated-name-get
         result = []
         for jfl in self:
             grade_count = len(jfl.job_grade_ids)
@@ -97,7 +97,7 @@ class HrJobFamilyLevel(models.Model):
                 min_grade = jfl.job_grade_ids[0].name
                 max_grade = jfl.job_grade_ids[grade_count - 1].name
 
-            name = "%s %s (%s - %s)" % (
+            name = "%s %s (%s - %s)" % (  # pylint: disable=consider-using-f-string
                 jfl.job_family_grade_id.name,
                 jfl.job_family_id.name,
                 min_grade,
@@ -139,7 +139,7 @@ class HrJobFamilyLevel(models.Model):
     )
     def _check_min_max_grade(self):
         obj_jg = self.env["hr.job_grade"]
-        job_grade_ids = obj_jg.search([]).ids
+        job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         msg = _("Wrong Max Min Grade")
         for jf in self:
             if jf.min_job_grade_id and jf.max_job_grade_id:

@@ -1,0 +1,283 @@
+scenarios:
+  - name: "HR Employee - Master Data Setup"
+    steps:
+      - step: "Create job grade category"
+        action: "create"
+        model: "hr.job_grade_category"
+        save_as: "grade_cat"
+        values:
+          name: "Main Category"
+          code: "MC"
+
+      - step: "Create job grade A (min grade)"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "grade_a"
+        values:
+          name: "Grade A"
+          code: "GRA"
+          sequence: 10
+          category_id: "EVAL: registry['grade_cat'].id"
+
+      - step: "Create job grade B (max grade)"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "grade_b"
+        values:
+          name: "Grade B"
+          code: "GRB"
+          sequence: 20
+          category_id: "EVAL: registry['grade_cat'].id"
+
+      - step: "Create job family grade"
+        action: "create"
+        model: "hr.job_family_grade"
+        save_as: "family_grade"
+        values:
+          name: "Family Grade Senior"
+          code: "FGS"
+
+      - step: "Create job family"
+        action: "create"
+        model: "hr.job_family"
+        save_as: "job_family"
+        values:
+          name: "Engineering Family"
+          code: "ENGF"
+          min_job_grade_id: "EVAL: registry['grade_a'].id"
+          max_job_grade_id: "EVAL: registry['grade_b'].id"
+
+      - step: "Assert job_family has computed job_grade_ids"
+        action: "assert"
+        target: "job_family"
+        asserts:
+          job_grade_ids:
+            type: "value"
+            operator: "is_truthy"
+
+      - step: "Create job family level"
+        action: "create"
+        model: "hr.job_family_level"
+        save_as: "family_level"
+        values:
+          name: "Senior Engineer"
+          code: "SENG"
+          job_family_id: "EVAL: registry['job_family'].id"
+          job_family_grade_id: "EVAL: registry['family_grade'].id"
+          min_job_grade_id: "EVAL: registry['grade_a'].id"
+          max_job_grade_id: "EVAL: registry['grade_b'].id"
+
+      - step: "Assert job_family_level has computed job_grade_ids"
+        action: "assert"
+        target: "family_level"
+        asserts:
+          job_grade_ids:
+            type: "value"
+            operator: "is_truthy"
+
+      - step: "Create employment status"
+        action: "create"
+        model: "hr.employment_status"
+        save_as: "emp_status"
+        values:
+          name: "Permanent"
+          code: "PERM"
+
+      - step: "Create hr.job with family level"
+        action: "create"
+        model: "hr.job"
+        save_as: "hr_job"
+        values:
+          name: "Software Engineer"
+          job_family_level_id: "EVAL: registry['family_level'].id"
+
+      - step: "Assert hr_job has computed job_grade"
+        action: "assert"
+        target: "hr_job"
+        asserts:
+          allowed_job_grade_ids:
+            type: "value"
+            operator: "is_truthy"
+
+      - step: "Create job description"
+        action: "create"
+        model: "job_description"
+        save_as: "job_desc"
+        values:
+          name: "Software Engineer Description"
+          code: "SED"
+
+      - step: "Create employee competency"
+        action: "create"
+        model: "employee_competency"
+        save_as: "emp_comp"
+        values:
+          name: "Technical Competency"
+          code: "TC"
+
+      - step: "Create employee skill"
+        action: "create"
+        model: "employee_skill"
+        save_as: "emp_skill"
+        values:
+          name: "Python Programming"
+          code: "PYT"
+
+  - name: "HR Employee - Onchange Methods"
+    steps:
+      - step: "Setup grade category for onchange test"
+        action: "create"
+        model: "hr.job_grade_category"
+        save_as: "oc_grade_cat"
+        values:
+          name: "OC Category"
+          code: "OCCAT"
+
+      - step: "Setup grade A for onchange test"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "oc_grade_a"
+        values:
+          name: "OC Grade A"
+          code: "OCGRA"
+          sequence: 10
+          category_id: "EVAL: registry['oc_grade_cat'].id"
+
+      - step: "Setup grade B for onchange test"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "oc_grade_b"
+        values:
+          name: "OC Grade B"
+          code: "OCGRB"
+          sequence: 20
+          category_id: "EVAL: registry['oc_grade_cat'].id"
+
+      - step: "Setup family grade for onchange test"
+        action: "create"
+        model: "hr.job_family_grade"
+        save_as: "oc_family_grade"
+        values:
+          name: "OC Family Grade"
+          code: "OCFG"
+
+      - step: "Setup job family for onchange test"
+        action: "create"
+        model: "hr.job_family"
+        save_as: "oc_job_family"
+        values:
+          name: "OC Job Family"
+          code: "OCJF"
+          min_job_grade_id: "EVAL: registry['oc_grade_a'].id"
+          max_job_grade_id: "EVAL: registry['oc_grade_b'].id"
+
+      - step: "Setup job family level for onchange test"
+        action: "create"
+        model: "hr.job_family_level"
+        save_as: "oc_family_level"
+        values:
+          name: "OC Family Level"
+          code: "OCFL"
+          job_family_id: "EVAL: registry['oc_job_family'].id"
+          job_family_grade_id: "EVAL: registry['oc_family_grade'].id"
+          min_job_grade_id: "EVAL: registry['oc_grade_a'].id"
+          max_job_grade_id: "EVAL: registry['oc_grade_b'].id"
+
+      - step: "Create hr.job for onchange test"
+        action: "create"
+        model: "hr.job"
+        save_as: "oc_hr_job"
+        values:
+          name: "OC Software Engineer"
+
+      - step: "Call onchange_job_family_level_id with a level"
+        action: "call"
+        target: "oc_hr_job"
+        method: "onchange_job_family_level_id"
+        args:
+          - "EVAL: registry['oc_family_level'].id"
+
+      - step: "Call onchange_job_family_level_id with False"
+        action: "call"
+        target: "oc_hr_job"
+        method: "onchange_job_family_level_id"
+        args:
+          - "EVAL: False"
+
+      - step: "Call onchange_job_family_id with a family"
+        action: "call"
+        target: "oc_family_level"
+        method: "onchange_job_family_id"
+        args:
+          - "EVAL: registry['oc_job_family'].id"
+
+      - step: "Call onchange_job_family_id with False"
+        action: "call"
+        target: "oc_family_level"
+        method: "onchange_job_family_id"
+        args:
+          - "EVAL: False"
+
+  - name: "HR Employee - Work Longevity Computation"
+    steps:
+      - step: "Create employee with date_join"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp1"
+        values:
+          name: "Employee With Longevity"
+          date_join: "2020-01-01"
+
+      - step: "Assert employee has work longevity computed"
+        action: "assert"
+        target: "emp1"
+        asserts:
+          month_work_longetivity:
+            type: "value"
+            operator: "gte"
+            expected: 0
+
+      - step: "Create employee with date_join and date_termination"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp2"
+        values:
+          name: "Terminated Employee"
+          date_join: "2020-01-01"
+          date_termination: "2022-06-30"
+
+      - step: "Assert terminated employee has work longevity"
+        action: "assert"
+        target: "emp2"
+        asserts:
+          month_work_longetivity:
+            type: "value"
+            operator: "gte"
+            expected: 0
+
+      - step: "Call action_dummy_save on employee"
+        action: "call"
+        target: "emp1"
+        method: "action_dummy_save"
+
+      - step: "Call cron_update_longetivity on employee"
+        action: "call"
+        target: "emp1"
+        method: "cron_update_longetivity"
+
+  - name: "HR Employee - Contract Date Setup"
+    steps:
+      - step: "Create employee for contract test"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_contract"
+        values:
+          name: "Employee With Contract"
+
+      - step: "Assert employee is created"
+        action: "assert"
+        target: "emp_contract"
+        asserts:
+          name:
+            type: "value"
+            expected: "Employee With Contract"

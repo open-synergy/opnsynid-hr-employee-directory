@@ -1,0 +1,23 @@
+scenarios:
+  - name: "HR Employee Operating Unit - Assign Operating Unit"
+    steps:
+      - step: "Load main operating unit"
+        action: "ref"
+        xml_id: "operating_unit.main_operating_unit"
+        save_as: "main_ou"
+
+      - step: "Create employee with operating unit"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_ou"
+        values:
+          name: "Employee With OU"
+          operating_unit_id: "EVAL: registry['main_ou'].id"
+
+      - step: "Assert operating_unit_id is set"
+        action: "assert"
+        target: "emp_ou"
+        asserts:
+          operating_unit_id:
+            type: "value"
+            operator: "is_truthy"

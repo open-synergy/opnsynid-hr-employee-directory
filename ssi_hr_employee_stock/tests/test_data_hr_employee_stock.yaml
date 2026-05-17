@@ -1,0 +1,60 @@
+scenarios:
+  - name: "HR Employee Stock - Create and Delete Employee Location"
+    steps:
+      - step: "Create employee for stock location test"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_stock"
+        values:
+          name: "Stock Test Employee"
+
+      - step: "Assert employee has no location initially"
+        action: "assert"
+        target: "emp_stock"
+        asserts:
+          location_id:
+            type: "value"
+            operator: "is_falsy"
+
+      - step: "Create employee stock location"
+        action: "call"
+        target: "emp_stock"
+        method: "action_create_employee_location"
+
+      - step: "Assert employee now has a location"
+        action: "assert"
+        target: "emp_stock"
+        asserts:
+          location_id:
+            type: "value"
+            operator: "is_truthy"
+
+      - step: "Delete employee stock location"
+        action: "call"
+        target: "emp_stock"
+        method: "action_delete_employee_location"
+
+      - step: "Assert employee location is removed"
+        action: "assert"
+        target: "emp_stock"
+        asserts:
+          location_id:
+            type: "value"
+            operator: "is_falsy"
+
+  - name: "HR Employee Stock - Warehouse Computation"
+    steps:
+      - step: "Create employee without address (no warehouse)"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_no_addr"
+        values:
+          name: "Employee Without Address"
+
+      - step: "Assert current_warehouse_id is not set"
+        action: "assert"
+        target: "emp_no_addr"
+        asserts:
+          current_warehouse_id:
+            type: "value"
+            operator: "is_falsy"

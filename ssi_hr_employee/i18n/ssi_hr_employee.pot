@@ -416,6 +416,12 @@ msgid "Grade 3"
 msgstr ""
 
 #. module: ssi_hr_employee
+#: model_terms:ir.ui.view,arch_db:ssi_hr_employee.hr_job_family_level_view_search
+#: model_terms:ir.ui.view,arch_db:ssi_hr_employee.hr_job_family_view_search
+msgid "Group By"
+msgstr ""
+
+#. module: ssi_hr_employee
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_employee_competency__id
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_employee_skill__id
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_hr_employee_base__id
@@ -547,6 +553,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_hr_job_family_level__job_family_id
 #: model:ir.ui.menu,name:ssi_hr_employee.job_family_modelling_configuration_menu
 #: model:res.groups,name:ssi_hr_employee.hr_job_family_group
+#: model_terms:ir.ui.view,arch_db:ssi_hr_employee.hr_job_family_level_view_search
 msgid "Job Family"
 msgstr ""
 
@@ -555,6 +562,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_hr_job_family_grade__name
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_hr_job_family_level__job_family_grade_id
 #: model:res.groups,name:ssi_hr_employee.hr_job_family_grade_group
+#: model_terms:ir.ui.view,arch_db:ssi_hr_employee.hr_job_family_level_view_search
 msgid "Job Family Grade"
 msgstr ""
 
@@ -776,6 +784,11 @@ msgid ""
 msgstr ""
 
 #. module: ssi_hr_employee
+#: model_terms:ir.ui.view,arch_db:ssi_hr_employee.hr_job_family_view_search
+msgid "Max Job Grade"
+msgstr ""
+
+#. module: ssi_hr_employee
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_hr_job_family__max_job_grade_id
 #: model:ir.model.fields,field_description:ssi_hr_employee.field_hr_job_family_level__max_job_grade_id
 msgid "Max. Grade"
@@ -810,6 +823,11 @@ msgstr ""
 #. module: ssi_hr_employee
 #: model:employee_skill,name:ssi_hr_employee.demo_employee_skill_excel
 msgid "Microsoft Excel"
+msgstr ""
+
+#. module: ssi_hr_employee
+#: model_terms:ir.ui.view,arch_db:ssi_hr_employee.hr_job_family_view_search
+msgid "Min Job Grade"
 msgstr ""
 
 #. module: ssi_hr_employee

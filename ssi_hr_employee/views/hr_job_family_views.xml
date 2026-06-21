@@ -12,7 +12,26 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data />
+        <data>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="min_job_grade_id" />
+                <field name="max_job_grade_id" />
+            </xpath>
+            <xpath expr="//group[@name='dom_active']" position="after">
+                <group expand="0" string="Group By">
+                    <filter
+                            name="grp_min_job_grade_id"
+                            string="Min Job Grade"
+                            context="{'group_by':'min_job_grade_id'}"
+                        />
+                    <filter
+                            name="grp_max_job_grade_id"
+                            string="Max Job Grade"
+                            context="{'group_by':'max_job_grade_id'}"
+                        />
+                </group>
+            </xpath>
+        </data>
     </field>
 </record>
 

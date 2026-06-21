@@ -12,7 +12,26 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data />
+        <data>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="job_family_id" />
+                <field name="job_family_grade_id" />
+            </xpath>
+            <xpath expr="//group[@name='dom_active']" position="after">
+                <group expand="0" string="Group By">
+                    <filter
+                            name="grp_job_family_id"
+                            string="Job Family"
+                            context="{'group_by':'job_family_id'}"
+                        />
+                    <filter
+                            name="grp_job_family_grade_id"
+                            string="Job Family Grade"
+                            context="{'group_by':'job_family_grade_id'}"
+                        />
+                </group>
+            </xpath>
+        </data>
     </field>
 </record>
 

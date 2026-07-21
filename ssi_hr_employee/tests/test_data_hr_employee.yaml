@@ -281,3 +281,31 @@ scenarios:
           name:
             type: "value"
             expected: "Employee With Contract"
+
+  - name: "HR Employee - Employees Menu Action View Mode Order"
+    steps:
+      - step: "Get Employees menu action (hr.open_view_employee_list_my)"
+        action: "ref"
+        xml_id: "hr.open_view_employee_list_my"
+        save_as: "employee_menu_action"
+
+      - step: "Assert tree view is opened before kanban, kanban still available"
+        action: "assert"
+        target: "employee_menu_action"
+        asserts:
+          view_mode:
+            type: "value"
+            expected: "tree,kanban,form,activity"
+
+      - step: "Get Employee Directory action (hr.hr_employee_public_action)"
+        action: "ref"
+        xml_id: "hr.hr_employee_public_action"
+        save_as: "employee_public_action"
+
+      - step: "Assert Employee Directory action view_mode is untouched"
+        action: "assert"
+        target: "employee_public_action"
+        asserts:
+          view_mode:
+            type: "value"
+            expected: "kanban,tree,form"

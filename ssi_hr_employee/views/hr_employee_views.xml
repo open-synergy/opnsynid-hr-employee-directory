@@ -88,6 +88,10 @@
         </field>
     </record>
 
+    <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,activity</field>
+    </record>
+
 <record id="hr_employee_self_view_form" model="ir.ui.view">
     <field name="name">hr.employee - form</field>
     <field name="model">hr.employee</field>

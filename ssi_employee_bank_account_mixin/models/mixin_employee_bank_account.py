@@ -41,6 +41,12 @@ class MixinEmployeeBankAccount(
         "employee_id",
     )
     def _compute_allowed_bank_account_ids(self):
+        """Compute the bank accounts selectable for the employee.
+
+        Collects the ``res.partner.bank`` records owned by the home
+        address contact of the employee. The result is empty when no
+        employee or no home address is set.
+        """
         for record in self:
             result = False
 

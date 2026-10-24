@@ -23,6 +23,11 @@ class HrJobFamilyLevel(models.Model):
         "job_family_id",
     )
     def _compute_job_grade(self):
+        """Compute the grades allowed by the selected job family.
+
+        Fills ``allowed_job_grade_ids`` with the grades of the job
+        family, so the min and max grade can be restricted to them.
+        """
         for jfl in self:
             jfl.allowed_job_grade_ids = jfl.job_family_id.job_grade_ids.ids
 
@@ -33,6 +38,12 @@ class HrJobFamilyLevel(models.Model):
         "min_job_grade_id.sequence",
     )
     def _compute_job_grade_ids(self):
+        """Compute the grades between the min and max grade.
+
+        Fills ``job_grade_ids`` with every grade from ``min_job_grade_id``
+        up to ``max_job_grade_id`` in the default grade order. The
+        result is empty when either bound is not set.
+        """
         obj_jg = self.env["hr.job_grade"]
         job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         for jf in self:
@@ -87,6 +98,15 @@ class HrJobFamilyLevel(models.Model):
     )
 
     def name_get(self):  # pylint: disable=deprecated-name-get
+        """Return the display name of each job family level.
+
+        The name is ``<family grade> <family> (<min> - <max>)``, where
+        min and max are the first and last grade of ``job_grade_ids``.
+        Both are shown as ``-`` when the level has no grades.
+
+        :return: list of ``[id, name]`` pairs.
+        :rtype: list
+        """
         result = []
         for jfl in self:
             grade_count = len(jfl.job_grade_ids)
@@ -107,6 +127,12 @@ class HrJobFamilyLevel(models.Model):
         return result
 
     def onchange_job_family_id(self, job_family_id):
+        """Build the value and domain for a changed job family.
+
+        :param job_family_id: id of the selected job family, or False.
+        :return: dict with the ``value`` and ``domain`` keys.
+        :rtype: dict
+        """
         value = self._get_value_before_onchange_job_family_id()
         domain = self._get_domain_before_onchange_job_family_id()
 
@@ -118,19 +144,49 @@ class HrJobFamilyLevel(models.Model):
         return {"value": value, "domain": domain}
 
     def _get_value_before_onchange_job_family_id(self):
+        """Return the values applied when no job family is selected.
+
+        Extension point; override it to add values.
+
+        :return: dict of field values.
+        :rtype: dict
+        """
         return {
             "job_grade_ids": [],
         }
 
     def _get_domain_before_onchange_job_family_id(self):
+        """Return the domain applied when no job family is selected.
+
+        Extension point; override it to add domain entries.
+
+        :return: dict of field domains.
+        :rtype: dict
+        """
         return {}
 
     def _get_value_after_onchange_job_family_id(self, job_family):
+        """Return the values applied when a job family is selected.
+
+        Extension point; override it to add values.
+
+        :param job_family: the selected ``hr.job_family`` record.
+        :return: dict of field values.
+        :rtype: dict
+        """
         return {
             "job_grade_ids": [],
         }
 
     def _get_domain_after_onchange_job_family_id(self, job_family):
+        """Return the domain applied when a job family is selected.
+
+        Extension point; override it to add domain entries.
+
+        :param job_family: the selected ``hr.job_family`` record.
+        :return: dict of field domains.
+        :rtype: dict
+        """
         return {}
 
     @api.constrains(
@@ -138,6 +194,11 @@ class HrJobFamilyLevel(models.Model):
         "max_job_grade_id",
     )
     def _check_min_max_grade(self):
+        """Ensure the min grade does not come after the max grade.
+
+        :raises UserError: if the min grade is placed after the max
+            grade in the default grade order.
+        """
         obj_jg = self.env["hr.job_grade"]
         job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         msg = _("Wrong Max Min Grade")

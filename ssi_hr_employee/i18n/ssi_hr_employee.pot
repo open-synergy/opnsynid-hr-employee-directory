@@ -567,13 +567,9 @@ msgid "Job Family Grade"
 msgstr ""
 
 #. module: ssi_hr_employee
+#: model:ir.actions.act_window,name:ssi_hr_employee.hr_job_family_grade_action
 #: model:ir.ui.menu,name:ssi_hr_employee.hr_job_family_grade_menu
 msgid "Job Family Grades"
-msgstr ""
-
-#. module: ssi_hr_employee
-#: model:ir.actions.act_window,name:ssi_hr_employee.hr_job_family_grade_action
-msgid "Job Family Gradse"
 msgstr ""
 
 #. module: ssi_hr_employee

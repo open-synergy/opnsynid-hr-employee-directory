@@ -80,7 +80,8 @@ odoo.define("ssi_hr_employee.hr_job_tour", function (require) {
             },
             {
                 content: "Pick the job family level from the dropdown",
-                trigger: ".ui-autocomplete .ui-menu-item a:contains(TOUR-JOB-LEVEL)",
+                trigger:
+                    ".ui-autocomplete .ui-menu-item a:contains(TOUR-JOB-FGRADE TOUR-JOB-FAMILY)",
             },
             // -- Click Save.
             {

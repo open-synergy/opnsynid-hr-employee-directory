@@ -33,17 +33,17 @@ odoo.define("ssi_hr_employee.hr_employee_tour", function (require) {
                 },
             },
             {
-                content: "Employees kanban is displayed",
+                content: "Employees list is displayed",
                 trigger: ".o_control_panel:not(.oe_tour_stale)",
-                extra_trigger: ".o_kanban_view",
+                extra_trigger: ".o_list_view",
                 run: function () {
                     // Assertion only.
                 },
             },
             {
                 content: "Click Create",
-                trigger: ".o-kanban-button-new",
-                extra_trigger: ".o_kanban_view",
+                trigger: ".o_list_button_add",
+                extra_trigger: ".o_list_view",
             },
             {
                 content: "Form is open in edit mode",

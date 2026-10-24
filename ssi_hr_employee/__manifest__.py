@@ -14,6 +14,7 @@
         "ssi_hr_employee_experience_from_work_address",
         "ssi_hr_employee_language_from_work_address",
         "ssi_master_data_mixin",
+        "web_tour",
     ],
     "data": [
         "security/res_group_data.xml",
@@ -30,6 +31,7 @@
         "views/employee_skill_views.xml",
         "views/employee_competency_views.xml",
         "views/hr_employee_views.xml",
+        "views/assets.xml",
     ],
     "demo": [
         "demo/hr_employment_status_demo.xml",

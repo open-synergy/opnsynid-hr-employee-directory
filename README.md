@@ -20,7 +20,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [ssi_employee_bank_account_mixin](ssi_employee_bank_account_mixin/) | 14.0.1.4.0 |  | Employee Bank Account Mixin
 [ssi_employee_document_mixin](ssi_employee_document_mixin/) | 14.0.4.4.0 |  | Employee Document Mixin
-[ssi_hr_employee](ssi_hr_employee/) | 14.0.2.14.0 |  | HR Employee
+[ssi_hr_employee](ssi_hr_employee/) | 14.0.2.14.1 |  | HR Employee
 [ssi_hr_employee_operating_unit](ssi_hr_employee_operating_unit/) | 14.0.1.3.0 |  | HR Employee + Operating Unit
 [ssi_hr_employee_stock](ssi_hr_employee_stock/) | 14.0.1.6.0 |  | Employee + Stock Integration
 

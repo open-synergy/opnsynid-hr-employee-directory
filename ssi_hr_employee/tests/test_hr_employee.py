@@ -10,7 +10,10 @@ from odoo.tests import tagged
 
 @tagged("post_install", "-at_install")
 class TestHrEmployee(YamlTransactionCase):
+    """Cover the HR directory models and the employee extension."""
+
     def test_hr_employee(self):
+        """Run the HR employee YAML scenarios."""
         self.run_yaml_scenario("test_data_hr_employee.yaml")
 
     def test_constraint_job_family_min_max_grade(self):
@@ -59,20 +62,5 @@ class TestHrEmployee(YamlTransactionCase):
                     "job_family_grade_id": fam_grade.id,
                     "min_job_grade_id": grade_b.id,
                     "max_job_grade_id": grade_a.id,
-                }
-            )
-
-    def test_employee_contract_date_constraint(self):
-        """Contract end date must be greater than contract start date."""
-        from datetime import date as _date
-
-        employee = (
-            self.env["hr.employee"].sudo().create({"name": "Test Contract Employee"})
-        )
-        with self.assertRaises(UserError):
-            employee.sudo().write(
-                {
-                    "date_contract_start": _date(2024, 12, 31),
-                    "date_contract_end": _date(2024, 1, 1),
                 }
             )

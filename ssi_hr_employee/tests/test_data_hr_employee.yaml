@@ -282,6 +282,73 @@ scenarios:
             type: "value"
             expected: "Employee With Contract"
 
+  - name: "HR Employee - Contract Date Constraint"
+    steps:
+      - step: "Create employee for contract date constraint"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_cd"
+        values:
+          name: "Employee Contract Dates"
+
+      - step: "Contract end before contract start is rejected"
+        action: "write"
+        target: "emp_cd"
+        expect_error:
+          type: "UserError"
+          message_contains: "Contract End Date must be greater than Contract Start Date"
+        values:
+          date_contract_start: "2024-12-31"
+          date_contract_end: "2024-01-01"
+
+      - step: "Contract end after contract start is saved"
+        action: "write"
+        target: "emp_cd"
+        values:
+          date_contract_start: "2024-01-01"
+          date_contract_end: "2024-12-31"
+
+      - step: "Assert both contract dates are stored"
+        action: "assert"
+        target: "emp_cd"
+        asserts:
+          date_contract_start:
+            type: "value"
+            expected: "EVAL: date(2024, 1, 1)"
+          date_contract_end:
+            type: "value"
+            expected: "EVAL: date(2024, 12, 31)"
+
+  - name: "HR Employee - Department Onchange"
+    steps:
+      - step: "Create parent department A"
+        action: "create"
+        model: "hr.department"
+        save_as: "dept_a"
+        values:
+          name: "Onchange Department A"
+
+      - step: "Create child department B of A"
+        action: "create"
+        model: "hr.department"
+        save_as: "dept_b"
+        values:
+          name: "Onchange Department B"
+          parent_id: "EVAL: registry['dept_a'].id"
+
+      - step: "Selecting an organization unit clears the department"
+        action: "form"
+        model: "hr.employee"
+        save: false
+        ops:
+          - set: {name: "Employee Department Onchange"}
+          - set: {department_id: "REC: dept_b"}
+          - set: {organization_unit_id: "REC: dept_a"}
+          - assert:
+              department_id:
+                type: "value"
+                operator: "is_falsy"
+
   - name: "HR Employee - Employees Menu Action View Mode Order"
     steps:
       - step: "Get Employees menu action (hr.open_view_employee_list_my)"

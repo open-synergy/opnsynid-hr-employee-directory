@@ -23,6 +23,11 @@ class HrEmployeeBase(models.AbstractModel):
 
     @api.depends("job_id")
     def _compute_job_grade(self):
+        """Compute the job grades allowed for the employee's job.
+
+        Set ``allowed_job_grade_ids`` to the grades of ``job_id``, or to
+        empty when no job is selected.
+        """
         for employee in self:
             result = False
             if employee.job_id:
@@ -56,7 +61,15 @@ class HrEmployeeBase(models.AbstractModel):
     )
 
     @api.onchange("organization_unit_id")
-    def _get_domain_department(self):
+    def onchange_department_id(self):
+        """Reset the department and restrict its domain to the unit.
+
+        Triggered by ``organization_unit_id``. When an organization unit
+        is selected, ``department_id`` is cleared and its domain is
+        limited to the unit and its child departments.
+
+        :return: dict with the ``domain`` for ``department_id``
+        """
         domain = {}
         if self.organization_unit_id:
             self.department_id = False  # pylint: disable=attribute-defined-outside-init
@@ -148,6 +161,12 @@ class HrEmployeeBase(models.AbstractModel):
         "date_termination",
     )
     def _compute_work_longetivity(self):
+        """Compute the years and months of work longevity.
+
+        The period runs from ``date_join`` to ``date_termination``, or to
+        today when the employee has not been terminated. Both results
+        are zero when ``date_join`` is empty.
+        """
         for document in self:
             year_work = month_work = 0
             if document.date_join:
@@ -165,11 +184,21 @@ class HrEmployeeBase(models.AbstractModel):
 
     @api.model
     def cron_update_longetivity(self):
+        """Recompute the work longevity of every employee.
+
+        Called by the scheduled action so the stored longevity values
+        follow the passing of time, since ``date.today()`` is not a
+        compute dependency.
+        """
         employee_ids = self.search([])  # pylint: disable=no-search-all
         for employee in employee_ids:
             employee._compute_work_longetivity()
 
     def action_dummy_save(self):
+        """Do nothing so the form is saved by the button click.
+
+        :return: ``True``
+        """
         return True
 
     @api.constrains(
@@ -177,6 +206,11 @@ class HrEmployeeBase(models.AbstractModel):
         "date_contract_end",
     )
     def _check_date_contract_start_end(self):
+        """Validate that the contract ends after it starts.
+
+        :raises UserError: if ``date_contract_end`` is earlier than
+            ``date_contract_start``
+        """
         for record in self:
             if record.date_contract_start and record.date_contract_end:
                 strWarning = _(  # pylint: disable=invalid-name

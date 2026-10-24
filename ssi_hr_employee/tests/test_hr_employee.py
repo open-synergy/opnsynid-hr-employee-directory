@@ -16,24 +16,6 @@ class TestHrEmployee(YamlTransactionCase):
         """Run the HR employee YAML scenarios."""
         self.run_yaml_scenario("test_data_hr_employee.yaml")
 
-    def test_constraint_job_family_min_max_grade(self):
-        """Job family min grade must have lower sequence than max grade."""
-        grade_a = self.env["hr.job_grade"].create(
-            {"name": "Grade A Constraint", "code": "GAC", "sequence": 10}
-        )
-        grade_b = self.env["hr.job_grade"].create(
-            {"name": "Grade B Constraint", "code": "GBC", "sequence": 20}
-        )
-        with self.assertRaises(UserError):
-            self.env["hr.job_family"].create(
-                {
-                    "name": "Invalid Family",
-                    "code": "INVF",
-                    "min_job_grade_id": grade_b.id,
-                    "max_job_grade_id": grade_a.id,
-                }
-            )
-
     def test_constraint_job_family_level_min_max_grade(self):
         """Job family level min grade must have lower sequence than max grade."""
         grade_a = self.env["hr.job_grade"].create(

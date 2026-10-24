@@ -376,3 +376,56 @@ scenarios:
           view_mode:
             type: "value"
             expected: "kanban,tree,form"
+
+  - name: "HR Employee - Job Family Min Max Grade Constraint"
+    steps:
+      - step: "Create job grade with sequence 10"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "mm_grade_low"
+        values:
+          name: "MM Grade Low"
+          code: "MMGL"
+          sequence: 10
+
+      - step: "Create job grade with sequence 20"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "mm_grade_high"
+        values:
+          name: "MM Grade High"
+          code: "MMGH"
+          sequence: 20
+
+      - step: "Job family with min grade after max grade is rejected"
+        action: "create"
+        model: "hr.job_family"
+        expect_error:
+          type: "UserError"
+          message_contains: "Wrong Max Min Grade"
+        values:
+          name: "MM Invalid Family"
+          code: "MMINV"
+          min_job_grade_id: "REC: mm_grade_high.id"
+          max_job_grade_id: "REC: mm_grade_low.id"
+
+      - step: "Job family with min grade before max grade is saved"
+        action: "create"
+        model: "hr.job_family"
+        save_as: "mm_valid_family"
+        values:
+          name: "MM Valid Family"
+          code: "MMVAL"
+          min_job_grade_id: "REC: mm_grade_low.id"
+          max_job_grade_id: "REC: mm_grade_high.id"
+
+      - step: "Assert job grades of the family contain both grades"
+        action: "assert"
+        target: "mm_valid_family"
+        asserts:
+          job_grade_ids:
+            type: "m2m"
+            check: "contains"
+            expected_records:
+              - "REC: mm_grade_low"
+              - "REC: mm_grade_high"

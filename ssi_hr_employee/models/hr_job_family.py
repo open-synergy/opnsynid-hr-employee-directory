@@ -26,6 +26,11 @@ class HrJobFamily(models.Model):  # pylint: disable=too-few-public-methods
         "min_job_grade_id.sequence",
     )
     def _compute_job_grade_ids(self):
+        """Compute the grades between the min and max grade.
+
+        ``job_grade_ids`` holds every ``hr.job_grade`` from the minimum
+        up to the maximum grade, following the default grade order.
+        """
         obj_jg = self.env["hr.job_grade"]
         job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         for jf in self:
@@ -68,6 +73,11 @@ class HrJobFamily(models.Model):  # pylint: disable=too-few-public-methods
         "max_job_grade_id",
     )
     def _check_min_max_grade(self):
+        """Validate that the min grade does not exceed the max grade.
+
+        :raises UserError: if the min grade is placed after the max
+            grade in the grade order
+        """
         obj_jg = self.env["hr.job_grade"]
         job_grade_ids = obj_jg.search([]).ids  # pylint: disable=no-search-all
         msg = _("Wrong Max Min Grade")

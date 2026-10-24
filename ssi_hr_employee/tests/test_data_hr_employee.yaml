@@ -429,3 +429,78 @@ scenarios:
             expected_records:
               - "REC: mm_grade_low"
               - "REC: mm_grade_high"
+
+  - name: "HR Employee - Job Family Level Min Max Grade Constraint"
+    steps:
+      - step: "Create job grade with sequence 10"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "lv_grade_low"
+        values:
+          name: "LV Grade Low"
+          code: "LVGL"
+          sequence: 10
+
+      - step: "Create job grade with sequence 20"
+        action: "create"
+        model: "hr.job_grade"
+        save_as: "lv_grade_high"
+        values:
+          name: "LV Grade High"
+          code: "LVGH"
+          sequence: 20
+
+      - step: "Create job family grade"
+        action: "create"
+        model: "hr.job_family_grade"
+        save_as: "lv_family_grade"
+        values:
+          name: "LV Family Grade"
+          code: "LVFG"
+
+      - step: "Create job family spanning both grades"
+        action: "create"
+        model: "hr.job_family"
+        save_as: "lv_family"
+        values:
+          name: "LV Family"
+          code: "LVFAM"
+          min_job_grade_id: "REC: lv_grade_low.id"
+          max_job_grade_id: "REC: lv_grade_high.id"
+
+      - step: "Job family level with min grade after max grade is rejected"
+        action: "create"
+        model: "hr.job_family_level"
+        expect_error:
+          type: "UserError"
+          message_contains: "Wrong Max Min Grade"
+        values:
+          name: "LV Invalid Level"
+          code: "LVINV"
+          job_family_id: "REC: lv_family.id"
+          job_family_grade_id: "REC: lv_family_grade.id"
+          min_job_grade_id: "REC: lv_grade_high.id"
+          max_job_grade_id: "REC: lv_grade_low.id"
+
+      - step: "Job family level with min grade before max grade is saved"
+        action: "create"
+        model: "hr.job_family_level"
+        save_as: "lv_valid_level"
+        values:
+          name: "LV Valid Level"
+          code: "LVVAL"
+          job_family_id: "REC: lv_family.id"
+          job_family_grade_id: "REC: lv_family_grade.id"
+          min_job_grade_id: "REC: lv_grade_low.id"
+          max_job_grade_id: "REC: lv_grade_high.id"
+
+      - step: "Assert job grades of the level contain both grades"
+        action: "assert"
+        target: "lv_valid_level"
+        asserts:
+          job_grade_ids:
+            type: "m2m"
+            check: "contains"
+            expected_records:
+              - "REC: lv_grade_low"
+              - "REC: lv_grade_high"

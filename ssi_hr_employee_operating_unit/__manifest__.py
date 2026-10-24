@@ -12,9 +12,11 @@
     "depends": [
         "ssi_hr_employee",
         "ssi_operating_unit_mixin",
+        "web_tour",
     ],
     "data": [
         "security/ir_rule/ir_rule_data.xml",
         "views/hr_employee_views.xml",
+        "views/assets.xml",
     ],
 }

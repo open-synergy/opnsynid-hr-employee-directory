@@ -21,3 +21,151 @@ scenarios:
           operating_unit_id:
             type: "value"
             operator: "is_truthy"
+
+  - name: "HR Employee Operating Unit - Employee of another operating unit is hidden"
+    steps:
+      - step: "Create operating unit A"
+        action: "create"
+        model: "operating.unit"
+        save_as: "ou_a"
+        values:
+          name: "OU A Employee Visibility N"
+          code: "OUAEVN"
+          partner_id: "REC: company.partner_id.id"
+
+      - step: "Create operating unit B"
+        action: "create"
+        model: "operating.unit"
+        save_as: "ou_b"
+        values:
+          name: "OU B Employee Visibility N"
+          code: "OUBEVN"
+          partner_id: "REC: company.partner_id.id"
+
+      - step: "Create internal user allowed only on operating unit A"
+        action: "create"
+        model: "res.users"
+        save_as: "ou_user"
+        values:
+          name: "OU A User Employee Visibility N"
+          login: "ou_a_user_employee_visibility_neg@example.com"
+          groups_id:
+            - - 6
+              - 0
+              - - "REF: base.group_user"
+          assigned_operating_unit_ids:
+            - - 6
+              - 0
+              - - "REC: ou_a.id"
+
+      - step: "Create employee in operating unit A"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_a"
+        values:
+          name: "Employee OU A Visibility N"
+          operating_unit_id: "REC: ou_a.id"
+
+      - step: "Create employee in operating unit B"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_b"
+        values:
+          name: "Employee OU B Visibility N"
+          operating_unit_id: "REC: ou_b.id"
+
+      - step: "Create employee without operating unit"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_none"
+        values:
+          name: "Employee No OU Visibility N"
+          operating_unit_id: false
+
+      - step: "User of operating unit A cannot find the employee of operating unit B"
+        action: "search"
+        model: "hr.employee"
+        domain:
+          - ["id", "=", "REC: emp_b.id"]
+        save_as: "found_b"
+        as_user: "ou_user"
+        expect_count: 0
+
+  - name:
+      "HR Employee Operating Unit - Employees of own or no operating unit are visible"
+    steps:
+      - step: "Create operating unit A"
+        action: "create"
+        model: "operating.unit"
+        save_as: "ou_a"
+        values:
+          name: "OU A Employee Visibility P"
+          code: "OUAEVP"
+          partner_id: "REC: company.partner_id.id"
+
+      - step: "Create operating unit B"
+        action: "create"
+        model: "operating.unit"
+        save_as: "ou_b"
+        values:
+          name: "OU B Employee Visibility P"
+          code: "OUBEVP"
+          partner_id: "REC: company.partner_id.id"
+
+      - step: "Create internal user allowed only on operating unit A"
+        action: "create"
+        model: "res.users"
+        save_as: "ou_user"
+        values:
+          name: "OU A User Employee Visibility P"
+          login: "ou_a_user_employee_visibility_pos@example.com"
+          groups_id:
+            - - 6
+              - 0
+              - - "REF: base.group_user"
+          assigned_operating_unit_ids:
+            - - 6
+              - 0
+              - - "REC: ou_a.id"
+
+      - step: "Create employee in operating unit A"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_a"
+        values:
+          name: "Employee OU A Visibility P"
+          operating_unit_id: "REC: ou_a.id"
+
+      - step: "Create employee in operating unit B"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_b"
+        values:
+          name: "Employee OU B Visibility P"
+          operating_unit_id: "REC: ou_b.id"
+
+      - step: "Create employee without operating unit"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_none"
+        values:
+          name: "Employee No OU Visibility P"
+          operating_unit_id: false
+
+      - step: "User of operating unit A finds the employee of operating unit A"
+        action: "search"
+        model: "hr.employee"
+        domain:
+          - ["id", "=", "REC: emp_a.id"]
+        save_as: "found_a"
+        as_user: "ou_user"
+        expect_count: 1
+
+      - step: "User of operating unit A finds the employee without operating unit"
+        action: "search"
+        model: "hr.employee"
+        domain:
+          - ["id", "=", "REC: emp_none.id"]
+        save_as: "found_none"
+        as_user: "ou_user"
+        expect_count: 1

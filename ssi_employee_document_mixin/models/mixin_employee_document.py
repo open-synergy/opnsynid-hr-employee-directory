@@ -27,6 +27,14 @@ class MixinEmployeeDocument(models.AbstractModel):
 
     @ssi_decorator.insert_on_search_view()
     def _employee_document_insert_search_element(self, view_arch):
+        """Insert the employee filter into the search view.
+
+        The element is added only when ``_search_by_employee`` is
+        enabled on the model.
+
+        :param view_arch: Search view architecture to extend.
+        :return: Search view architecture, extended if enabled.
+        """
         if self._search_by_employee:
             view_arch = self._add_view_element(
                 view_arch=view_arch,
@@ -38,6 +46,11 @@ class MixinEmployeeDocument(models.AbstractModel):
 
     @api.model
     def _default_employee_id(self):  # pylint: disable=inconsistent-return-statements
+        """Get the default employee of the current user.
+
+        :return: Id of the first employee linked to the current user,
+            or None when the user has no employee.
+        """
         employees = self.env.user.employee_ids
         if len(employees) > 0:
             return employees[0].id

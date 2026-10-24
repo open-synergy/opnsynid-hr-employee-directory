@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 OpenSynergy Indonesia
+     Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+<template
+        id="assets_tests"
+        name="ssi_hr_employee assets tests"
+        inherit_id="web.assets_tests"
+    >
+    <xpath expr="." position="inside">
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_employment_status_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_job_grade_category_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_job_grade_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_job_family_grade_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_job_family_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_job_family_level_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/job_description_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/employee_skill_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/employee_competency_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_employee_tour.js"
+            />
+        <script
+                type="text/javascript"
+                src="/ssi_hr_employee/static/tests/tours/hr_job_tour.js"
+            />
+    </xpath>
+</template>
+</odoo>

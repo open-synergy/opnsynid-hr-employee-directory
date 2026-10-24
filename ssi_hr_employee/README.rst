@@ -12,6 +12,60 @@ longevity calculation. Includes master data models for job grade, job
 family, and related competency catalogues.
 
 
+Work Instruction
+================
+
+* `Create Employment Status <docs/hr_employment_status/index.html>`_
+* `Edit Employment Status <docs/hr_employment_status/index.html>`_
+* `Delete Employment Status <docs/hr_employment_status/index.html>`_
+* `Deactivate Employment Status <docs/hr_employment_status/index.html>`_
+* `Activate Employment Status <docs/hr_employment_status/index.html>`_
+* `Create Job Grade Category <docs/hr_job_grade_category/index.html>`_
+* `Edit Job Grade Category <docs/hr_job_grade_category/index.html>`_
+* `Delete Job Grade Category <docs/hr_job_grade_category/index.html>`_
+* `Deactivate Job Grade Category <docs/hr_job_grade_category/index.html>`_
+* `Activate Job Grade Category <docs/hr_job_grade_category/index.html>`_
+* `Create Job Grade <docs/hr_job_grade/index.html>`_
+* `Edit Job Grade <docs/hr_job_grade/index.html>`_
+* `Delete Job Grade <docs/hr_job_grade/index.html>`_
+* `Deactivate Job Grade <docs/hr_job_grade/index.html>`_
+* `Activate Job Grade <docs/hr_job_grade/index.html>`_
+* `Create Job Family Grade <docs/hr_job_family_grade/index.html>`_
+* `Edit Job Family Grade <docs/hr_job_family_grade/index.html>`_
+* `Delete Job Family Grade <docs/hr_job_family_grade/index.html>`_
+* `Deactivate Job Family Grade <docs/hr_job_family_grade/index.html>`_
+* `Activate Job Family Grade <docs/hr_job_family_grade/index.html>`_
+* `Create Job Family <docs/hr_job_family/index.html>`_
+* `Edit Job Family <docs/hr_job_family/index.html>`_
+* `Delete Job Family <docs/hr_job_family/index.html>`_
+* `Deactivate Job Family <docs/hr_job_family/index.html>`_
+* `Activate Job Family <docs/hr_job_family/index.html>`_
+* `Create Job Family Level <docs/hr_job_family_level/index.html>`_
+* `Edit Job Family Level <docs/hr_job_family_level/index.html>`_
+* `Delete Job Family Level <docs/hr_job_family_level/index.html>`_
+* `Deactivate Job Family Level <docs/hr_job_family_level/index.html>`_
+* `Activate Job Family Level <docs/hr_job_family_level/index.html>`_
+* `Create Job Description <docs/job_description/index.html>`_
+* `Edit Job Description <docs/job_description/index.html>`_
+* `Delete Job Description <docs/job_description/index.html>`_
+* `Deactivate Job Description <docs/job_description/index.html>`_
+* `Activate Job Description <docs/job_description/index.html>`_
+* `Create Employee Skill <docs/employee_skill/index.html>`_
+* `Edit Employee Skill <docs/employee_skill/index.html>`_
+* `Delete Employee Skill <docs/employee_skill/index.html>`_
+* `Deactivate Employee Skill <docs/employee_skill/index.html>`_
+* `Activate Employee Skill <docs/employee_skill/index.html>`_
+* `Create Employee Competency <docs/employee_competency/index.html>`_
+* `Edit Employee Competency <docs/employee_competency/index.html>`_
+* `Delete Employee Competency <docs/employee_competency/index.html>`_
+* `Deactivate Employee Competency <docs/employee_competency/index.html>`_
+* `Activate Employee Competency <docs/employee_competency/index.html>`_
+* `Create Employee (HR Employee extension) <docs/hr_employee/index.html>`_
+* `Edit Employee (HR Employee extension) <docs/hr_employee/index.html>`_
+* `Update My Employment Information <docs/hr_employee/index.html>`_
+* `Create Job Position (HR Employee extension) <docs/hr_job/index.html>`_
+* `Edit Job Position (HR Employee extension) <docs/hr_job/index.html>`_
+
 Installation
 ============
 

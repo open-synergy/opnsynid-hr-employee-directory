@@ -14,10 +14,12 @@
     "depends": [
         "ssi_hr_employee",
         "ssi_stock",
+        "web_tour",
     ],
     "data": [
         "data/location_type_data.xml",
         "views/hr_employee_views.xml",
+        "views/assets.xml",
     ],
     "demo": [],
 }

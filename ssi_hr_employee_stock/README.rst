@@ -11,6 +11,14 @@ a dedicated internal stock location to each employee and computes the
 current warehouse based on the employee's work address.
 
 
+Work Instruction
+================
+
+* `Edit Employee (HR Employee stock extension) <docs/hr_employee/index.html>`_
+* `Create Employee Location <docs/hr_employee/index.html>`_
+* `Delete Employee Location <docs/hr_employee/index.html>`_
+
+
 Bug Tracker
 ===========
 

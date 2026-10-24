@@ -9,13 +9,8 @@ from odoo.tests import tagged
 
 @tagged("post_install", "-at_install")
 class TestHrEmployeeStock(YamlTransactionCase):
-    def test_hr_employee_stock(self):
-        self.run_yaml_scenario("test_data_hr_employee_stock.yaml")
+    """Cover the stock location actions and warehouse of ``hr.employee``."""
 
-    def test_delete_employee_location_when_none(self):
-        """_delete_employee_location returns early when location_id not set."""
-        employee = self.env["hr.employee"].create({"name": "Employee No Location"})
-        self.assertFalse(employee.location_id)
-        # Should not raise - returns True early
-        employee.action_delete_employee_location()
-        self.assertFalse(employee.location_id)
+    def test_hr_employee_stock(self):
+        """Run the employee location and warehouse YAML scenarios."""
+        self.run_yaml_scenario("test_data_hr_employee_stock.yaml")

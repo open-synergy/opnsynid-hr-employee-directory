@@ -58,3 +58,25 @@ scenarios:
           current_warehouse_id:
             type: "value"
             operator: "is_falsy"
+
+  - name: "HR Employee Stock - Delete Location When None"
+    steps:
+      - step: "Create employee without location"
+        action: "create"
+        model: "hr.employee"
+        save_as: "emp_no_location"
+        values:
+          name: "Employee No Location"
+
+      - step: "Delete employee location while none exists"
+        action: "call"
+        target: "emp_no_location"
+        method: "action_delete_employee_location"
+
+      - step: "Assert location is still empty"
+        action: "assert"
+        target: "emp_no_location"
+        asserts:
+          location_id:
+            type: "value"
+            operator: "is_falsy"

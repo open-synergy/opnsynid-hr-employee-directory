@@ -37,7 +37,7 @@
 </record>
 
 <record id="hr_job_family_grade_action" model="ir.actions.act_window">
-    <field name="name">Job Family Gradse</field>
+    <field name="name">Job Family Grades</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">hr.job_family_grade</field>
     <field name="view_mode">tree,form</field>

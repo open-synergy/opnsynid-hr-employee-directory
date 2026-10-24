@@ -10,6 +10,12 @@ Integrates hr.employee with Operating Unit support.
 Allows employee records to be scoped to a specific operating unit.
 
 
+Work Instruction
+================
+
+* `Create Employee (HR Employee operating unit extension) <docs/hr_employee/index.html>`_
+
+
 Bug Tracker
 ===========
 
